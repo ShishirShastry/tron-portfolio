@@ -98,6 +98,7 @@
 
     .nav-links {
       display: flex;
+      align-items: center; /* Ensures button aligns with links */
       list-style: none;
       gap: 25px;
     }
@@ -119,6 +120,26 @@
       box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
       text-shadow: 0 0 10px var(--neon-cyan);
     }
+    
+    /* Style for the music toggle button */
+    .music-toggle-btn {
+        background: none;
+        border: 1px solid var(--neon-orange);
+        color: var(--neon-orange);
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 8px 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .music-toggle-btn:hover {
+        background: rgba(255, 102, 0, 0.2);
+        box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+        color: #ffffff;
+    }
 
     /* Mobile Menu */
     .mobile-toggle {
@@ -130,7 +151,7 @@
       cursor: pointer;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 860px) { /* Adjusted breakpoint for new button */
       .nav-links {
         position: absolute;
         top: 100%;
@@ -522,13 +543,15 @@
   </style>
 </head>
 <body>
-  <!-- Grid Background -->
   <div class="grid-bg"></div>
   
-  <!-- Three.js Canvas -->
   <canvas id="three-canvas"></canvas>
 
-  <!-- Navigation -->
+  <audio id="background-music" loop>
+    <source src="TRON Legacy (End Titles).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <nav>
     <div class="nav-container">
       <div class="logo">SHISHIR</div>
@@ -541,11 +564,11 @@
         <li><a href="#skills" class="nav-link">SKILLS</a></li>
         <li><a href="#projects" class="nav-link">PROJECTS</a></li>
         <li><a href="#contact" class="nav-link">CONTACT</a></li>
+        <li><button id="music-toggle" class="music-toggle-btn">MUSIC_OFF</button></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="container">
       <h1>SHISHIR SHASTRY BH</h1>
@@ -554,7 +577,6 @@
     </div>
   </section>
 
-  <!-- About Section -->
   <section id="about">
     <div class="container">
       <div class="glass-card fade-in">
@@ -564,14 +586,12 @@
           I am <strong>Shishir Shastry BH</strong>, a developer specializing in <strong>full-stack development</strong>, <strong>AI solutions</strong>, and <strong>immersive reality experiences</strong> using Unreal Engine 5.<br>
           My digital toolkit includes technologies like <strong>Python</strong>, <strong>Streamlit</strong>, <strong>Gradio</strong>, <strong>Node.js</strong>, <strong>JavaScript</strong>, <strong>Generative AI</strong>, and <strong>AI Agents</strong>.<br>
           I architect <strong>scalable backends</strong> with <strong>MongoDB</strong> and <strong>PostgreSQL</strong>.<br>
-          I am a relentlessly curious learner who finds joy in turning abstract ideas into tangible tech — fueled by logic, late-night energy, and the occasional fizzy drink.<br><br>
           With a strong focus on user interaction and emerging tech, I craft <strong>interactive projects</strong> that blur the line between digital and physical realities.          
         </p>
       </div>
     </div>
   </section>
 
-<!-- Work Experience Section -->
 <section id="work-experience" aria-label="Work Experience">
   <div class="container">
     <div class="glass-card fade-in">
@@ -592,7 +612,6 @@
         </div>
         
       <br>
-        <!-- Experience Card -->
         <div class="experience-card">
           <h3 class="experience-title">✍️ Technical Writer</h3>
           <p><strong>Hashnode</strong> | Jul 2023 – Apr 2024</p>
@@ -603,7 +622,6 @@
           <p><strong>Tools:</strong> Markdown, Hashnode, SEO, Developer Advocacy</p>
         </div>
         <br>
-        <!-- Experience Card -->
         <div class="experience-card">
           <h3 class="experience-title">🌐 LFX Mentee – Meshery (CNCF)</h3>
           <p><strong>The Linux Foundation</strong> | Jan 2024 – Mar 2024</p>
@@ -614,7 +632,6 @@
           <p><strong>Focus Areas:</strong> DevOps, Distributed Systems, GitHub, Open Source</p>
         </div>
         <br>
-        <!-- Experience Card -->
         <div class="experience-card">
           <h3 class="experience-title">🌍 Web Development Intern</h3>
           <p><strong>Orbitor</strong> | Oct 2023</p>
@@ -625,7 +642,6 @@
           <p><strong>Stack:</strong> HTML, CSS, JavaScript, Node.js, Express.js, MongoDB</p>
         </div>
         <br>
-        <!-- Experience Card -->
         <div class="experience-card">
           <h3 class="experience-title">🎬 Organizer & Video Editor</h3>
           <p><strong>REVA HACK 2023</strong> | Aug 2023 – Jan 2024</p>
@@ -636,7 +652,6 @@
           <p><strong>Skills:</strong> Event Management, Video Editing, Promotion Strategy</p>
         </div>
         <br>
-        <!-- Experience Card -->
         <div class="experience-card">
           <h3 class="experience-title">🧪 Inplant Trainee</h3>
           <p><strong>Integra Micro Software Services</strong> | May 2022 – Jun 2022</p>
@@ -652,7 +667,6 @@
   </div>
 </section>
 
-  <!-- Education Section -->
   <section id="education">
     <div class="container">
       <div class="glass-card fade-in">
@@ -684,7 +698,6 @@
     </div>
   </section>
 
-  <!-- Skills Section -->
   <section id="skills">
     <div class="container">
       <div class="glass-card fade-in">
@@ -717,7 +730,6 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
   <section id="projects">
     <div class="container">
       <div class="glass-card fade-in">
@@ -753,7 +765,6 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact">
     <div class="container">
       <div class="glass-card fade-in">
@@ -784,7 +795,6 @@
     </div>
   </section>
 
-  <!-- Three.js CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <script>
@@ -972,10 +982,31 @@
       }, 6000);
     }
 
+    // =========== NEW MUSIC TOGGLE FUNCTIONALITY ===========
+    function setupMusicToggle() {
+      const music = document.getElementById('background-music');
+      const toggleButton = document.getElementById('music-toggle');
+
+      if (music && toggleButton) {
+        toggleButton.addEventListener('click', () => {
+          if (music.paused) {
+            music.play();
+            toggleButton.textContent = 'MUSIC_ON';
+          } else {
+            music.pause();
+            toggleButton.textContent = 'MUSIC_OFF';
+          }
+        });
+      }
+    }
+
     // Initialize everything when page loads
     window.addEventListener('load', () => {
       // Initialize Three.js
       initThreeJS();
+      
+      // Initialize music toggle
+      setupMusicToggle();
       
       // Start typewriter effect
       const typewriterElement = document.getElementById('typewriter');
